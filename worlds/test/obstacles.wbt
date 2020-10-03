@@ -1,0 +1,107 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  basicTimeStep 16
+  FPS 100
+}
+Viewpoint {
+  orientation 0.6183188282349001 -0.7552630014933595 -0.21739279018739746 5.350969011821488
+  position 1.4874476417376057 1.9030171239420761 1.7053527733268088
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation 0 0.05 -0.32
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.31 0.05 0
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0 0.05 0.33
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+E-puck {
+  translation 0.121402 0.000488863 0.307853
+  rotation -0.00031990096855131724 0.9999999016924525 -0.0003070479698148641 -3.087925307179586
+  controller "frist"
+}
+DEF BALL Solid {
+  translation 0 0.2 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 5
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation 0 0.18 0.13
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry USE BALL_GEOMETRY
+    }
+  ]
+  name "Ball"
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation 0 0.05 0.5
+  children [
+    DEF wall Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 1.05 0.1 0.05
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE wall
+}
+Solid {
+  translation 0 0.05 -0.5
+  children [
+    USE wall
+  ]
+  name "solid(2)"
+  boundingObject USE wall
+}
+Solid {
+  translation 0.525 0.05 0
+  rotation 0 1 0 1.5707996938995747
+  children [
+    USE wall
+  ]
+  name "solid(3)"
+  boundingObject USE wall
+}
+Solid {
+  translation -0.525 0.05 0
+  rotation 0 1 0 1.5707996938995747
+  children [
+    USE wall
+  ]
+  name "solid(4)"
+  boundingObject USE wall
+}
